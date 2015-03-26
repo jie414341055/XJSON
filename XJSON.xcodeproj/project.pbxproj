@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CEC48CDD1AC3E37200E8E8D2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEC48CDC1AC3E37200E8E8D2 /* main.cpp */; };
+		CEC48CE51AC3E3CA00E8E8D2 /* JSON.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEC48CE41AC3E3CA00E8E8D2 /* JSON.cpp */; };
+		CEC48CE81AC3E80C00E8E8D2 /* JSONValue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEC48CE71AC3E80C00E8E8D2 /* JSONValue.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,10 @@
 /* Begin PBXFileReference section */
 		CEC48CD91AC3E37200E8E8D2 /* XJSON */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = XJSON; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC48CDC1AC3E37200E8E8D2 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		CEC48CE31AC3E3BC00E8E8D2 /* JSON.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		CEC48CE41AC3E3CA00E8E8D2 /* JSON.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JSON.cpp; sourceTree = "<group>"; };
+		CEC48CE61AC3E80000E8E8D2 /* JSONValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSONValue.h; sourceTree = "<group>"; };
+		CEC48CE71AC3E80C00E8E8D2 /* JSONValue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JSONValue.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,10 @@
 			isa = PBXGroup;
 			children = (
 				CEC48CDC1AC3E37200E8E8D2 /* main.cpp */,
+				CEC48CE31AC3E3BC00E8E8D2 /* JSON.h */,
+				CEC48CE61AC3E80000E8E8D2 /* JSONValue.h */,
+				CEC48CE71AC3E80C00E8E8D2 /* JSONValue.cpp */,
+				CEC48CE41AC3E3CA00E8E8D2 /* JSON.cpp */,
 			);
 			path = XJSON;
 			sourceTree = "<group>";
@@ -119,6 +129,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEC48CDD1AC3E37200E8E8D2 /* main.cpp in Sources */,
+				CEC48CE51AC3E3CA00E8E8D2 /* JSON.cpp in Sources */,
+				CEC48CE81AC3E80C00E8E8D2 /* JSONValue.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
