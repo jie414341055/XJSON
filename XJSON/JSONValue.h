@@ -44,6 +44,7 @@ public:
     double getNumber() const;
     const JSONArray &getArray() const;
     const JSONObject &getObject() const;
+    std::string getType() const;
     
     std::size_t numOfChildren() const;
     bool hasChild(std::size_t index) const;

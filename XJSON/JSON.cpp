@@ -48,6 +48,7 @@ JSONValue* JSON::Parse(const char *data) {
  * @param wchar_t* data
  * @return JSONValue*
  */
+#include <iostream>
 JSONValue* JSON::Parse(const wchar_t *data) {
     if (!SkipWhitespace(&data)) {
         return NULL;
@@ -57,7 +58,6 @@ JSONValue* JSON::Parse(const wchar_t *data) {
     if (value == NULL) {
         return NULL;
     }
-    
     if (SkipWhitespace(&data)) {
         delete value;
         return NULL;
@@ -135,7 +135,7 @@ bool JSON::ExtractString(const wchar_t** data, std::wstring &str) {
                     
             }
             
-        } else if (now <= L' ' && now != L'\t') {
+        } else if (now < L' ' && now != L'\t') {
             // not allowed, invisible characters
             return false;
         } else if (now == L'"') {
@@ -147,9 +147,39 @@ bool JSON::ExtractString(const wchar_t** data, std::wstring &str) {
         
         str += now;
         (*data) ++;
+        //std::wcout << str << std::endl;
     }
     
     
     return false;
+}
+
+
+/*
+ * @access protected
+ * Parse wchar_t** to int number
+ */
+double JSON::ParseInt(const wchar_t **data) {
+    double res = 0.0;
+    while (**data != 0 && **data >= '0' && **data <= '9') {
+        res = res * 10 + (*(*data)++ - '0');
+    }
+    return res;
+}
+
+
+/*
+ * @access protected
+ * Parse wchar_t** to decimal number
+ */
+double JSON::ParseDecimal(const wchar_t **data) {
+    double res = 0.0;
+    double base = 0.1;
+    while (**data != 0 && **data >= '0' && **data <= '9') {
+        int tmp = (*(*data)++ - '0');
+        res += base * tmp;
+        base *= 0.1;
+    }
+    return res;
 }
 

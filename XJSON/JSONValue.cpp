@@ -99,7 +99,6 @@ JSONValue *JSONValue::Parse(const wchar_t **data) {
     // object
     } else if (**data == L'{') {
         JSONObject obj;
-        
         (*data) ++;
         
         while (**data != 0) {
@@ -148,7 +147,6 @@ JSONValue *JSONValue::Parse(const wchar_t **data) {
             }
             
             JSONValue *value = Parse(data);
-            
             // key:value
             if (obj.find(key) != obj.end()) delete obj[key];
             obj[key] = value;
@@ -552,7 +550,7 @@ std::wstring JSONValue::StringifyImpl(const size_t indentDepth) const {
 std::wstring JSONValue::printString(const std::wstring &str) {
     std::wstring result = L"\"";
     
-    sd::wstring::const_iterator iter = str.begin();
+    std::wstring::const_iterator iter = str.begin();
     
     while (iter != str.end()) {
         wchar_t c = *iter;
@@ -620,3 +618,22 @@ std::wstring JSONValue::Indent(size_t indentDepth) {
 }
 
 
+/*
+ * @access public
+ * get type
+ */
+std::string JSONValue::getType() const {
+    if (type == JSONType_null) {
+        return "NULL";
+    } else if (type == JSONType_bool) {
+        return "bool";
+    } else if (type == JSONType_number) {
+        return "number";
+    } else if (type == JSONType_string) {
+        return "string";
+    } else if (type == JSONType_object) {
+        return "object";
+    } else {
+        return "array";
+    }
+}
