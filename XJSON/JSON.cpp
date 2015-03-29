@@ -161,7 +161,7 @@ bool JSON::ExtractString(const wchar_t** data, std::wstring &str) {
  */
 double JSON::ParseInt(const wchar_t **data) {
     double res = 0.0;
-    while (**data != 0 && **data >= '0' && **data <= '9') {
+    while (**data != 0 && **data >= L'0' && **data <= L'9') {
         res = res * 10 + (*(*data)++ - '0');
     }
     return res;

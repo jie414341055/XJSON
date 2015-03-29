@@ -52,7 +52,7 @@ JSONValue *JSONValue::Parse(const wchar_t **data) {
         
         if (**data == L'0') {
             (*data) ++;
-        } else if (**data > L'0' && **data <= L'9') {
+        } else if (**data >= L'1' && **data <= L'9') {
             value = JSON::ParseInt(data);
         } else {
             return NULL;
@@ -91,16 +91,16 @@ JSONValue *JSONValue::Parse(const wchar_t **data) {
                 value = neg_exp ? (value / 10.0) : (value * 10.0);
             }
             
-            value *= neg_exp ? -1 : 1;
-            
-            return new JSONValue(value);
             
         }
+        
+        value *= (neg ? -1.0 : 1.0);
+        return new JSONValue(value);
+
     // object
     } else if (**data == L'{') {
         JSONObject obj;
         (*data) ++;
-        
         while (**data != 0) {
             // skip whitespace
             if (!JSON::SkipWhitespace(data)) {
@@ -115,14 +115,9 @@ JSONValue *JSONValue::Parse(const wchar_t **data) {
             }
             
             // now should be a string
-            if (**data != L'"') {
-                FREE_OBJECT(obj);
-                return NULL;
-            }
-            (*data) ++;
             
             std::wstring key;
-            if (!JSON::ExtractString(data, key)) {
+            if (!JSON::ExtractString(&(++(*data)), key)) {
                 FREE_OBJECT(obj);
                 return NULL;
             }
@@ -134,11 +129,10 @@ JSONValue *JSONValue::Parse(const wchar_t **data) {
             }
             
             // now should be a ':'
-            if (**data != L':') {
+            if ((*(*data)++) != L':') {
                 FREE_OBJECT(obj);
                 return NULL;
             }
-            (*data) ++;
             
             // skip whitespace
             if (!JSON::SkipWhitespace(data)) {
@@ -494,7 +488,6 @@ std::wstring JSONValue::StringifyImpl(const size_t indentDepth) const {
                 std::wstringstream ss;
                 ss.precision(10);
                 ss << number_value;
-                
                 result = ss.str();
             }
             break;
