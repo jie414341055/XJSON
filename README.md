@@ -17,6 +17,7 @@ XJSON is a JSON Parse for decoding and encoding JSON in C++.
     JSONObject obj = basic->getObject();
     ```
 -   Append new item
+
     ```cpp
     obj[L"new_string"] = new JSONValue("world");	// string
     obj[L"new_bool"] = new JSONValue(false);		// bool
@@ -29,6 +30,7 @@ XJSON is a JSON Parse for decoding and encoding JSON in C++.
     std::wcout << basic->Stringify(false) << std::endl;
     ```
 -   Deal with array and object
+
     ```cpp
     const wchar_t* str = L" \
     { \
