@@ -50,7 +50,7 @@ XJSON is a JSON Parse for decoding and encoding JSON in C++.
     JSONArray arr;
     arr.push_back(new JSONValue(100.0));
     arr.push_back(new JSONValue("There is my cat."));
-    root[L"new_arr"] = new JSONValue(arr);
-    advance = new JSONValue(root);
+    obj[L"new_arr"] = new JSONValue(arr);
+    advance = new JSONValue(obj);
 
     ```
